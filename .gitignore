@@ -1,0 +1,7 @@
+# javascript
+node_modules/
+
+# dotnet
+.vs
+bin/
+obj/
