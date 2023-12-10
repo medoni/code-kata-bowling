@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34310.174
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowling-Game-Engine", "Bowling-Game-Engine\Bowling-Game-Engine.csproj", "{47A185F1-C0F2-4DB5-BDD3-AAC9E0DDE551}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowling-Game-Engine", "Bowling-Game-Engine\Bowling-Game-Engine.csproj", "{47A185F1-C0F2-4DB5-BDD3-AAC9E0DDE551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowling-Game-Engine.Tests", "Bowling-Game-Engine.Tests\Bowling-Game-Engine.Tests.csproj", "{DB60B7EB-41B9-4A79-9E15-009B54BCC2EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{1ED50B9E-4552-478E-8A21-8E92F1A7CBBF}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\README.md = ..\README.md
+		..\spellcheck_exclusion.dic = ..\spellcheck_exclusion.dic
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +26,10 @@ Global
 		{47A185F1-C0F2-4DB5-BDD3-AAC9E0DDE551}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47A185F1-C0F2-4DB5-BDD3-AAC9E0DDE551}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47A185F1-C0F2-4DB5-BDD3-AAC9E0DDE551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB60B7EB-41B9-4A79-9E15-009B54BCC2EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB60B7EB-41B9-4A79-9E15-009B54BCC2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB60B7EB-41B9-4A79-9E15-009B54BCC2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB60B7EB-41B9-4A79-9E15-009B54BCC2EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
