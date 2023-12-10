@@ -1,4 +1,5 @@
-﻿using BowlingCodeKata.BowlingGame.Impl;
+﻿using BowlingCodeKata.BowlingGame;
+using BowlingCodeKata.BowlingGame.Impl;
 
 namespace BowlingCodeKata.Tests.UnitTests.Impl;
 
@@ -7,11 +8,14 @@ namespace BowlingCodeKata.Tests.UnitTests.Impl;
 public class BowlingScoreEngineTests
 {
     private BowlingScoreEngine Sut { get; set; }
+    private FramesList Frames { get; set; }
 
     [SetUp]
     public void SetUp()
     {
-        Sut = new BowlingScoreEngine();
+        Frames = new FramesList();
+
+        Sut = new BowlingScoreEngine(Frames);
     }
 
     [Test]
