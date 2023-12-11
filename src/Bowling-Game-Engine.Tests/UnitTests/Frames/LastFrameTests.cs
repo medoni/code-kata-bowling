@@ -25,9 +25,8 @@ public class LastFrameTests
     [TestCase(true, 8, 2)]
     [TestCase(false, 1, 2)]
     [TestCase(true, 10)]
-    [TestCase(true, 10, 10)]
-    [TestCase(false, 10, 10, 8)]
-    [TestCase(false, 10, 10, 10)]
+    [TestCase(false, 10, 10)]
+    [TestCase(false, 10, 8, 1)]
     public void CanThrow_Should_Return_Correct_Values(
         bool expectedResult,
         params int[] throws
@@ -47,9 +46,8 @@ public class LastFrameTests
     [TestCase(true, 1, 2)]
     [TestCase(false, 10)]
     [TestCase(false, 10, 1)]
-    [TestCase(false, 10, 10)]
-    [TestCase(true, 10, 10, 1)]
-    [TestCase(true, 10, 10, 10)]
+    [TestCase(true, 10, 10)]
+    [TestCase(true, 10, 8, 1)]
     public void ThrowFinished_Should_Return_Correct_Values(
         bool expectedResult,
         params int[] throws
@@ -69,8 +67,8 @@ public class LastFrameTests
     [TestCase(10)]
     [TestCase(8, 2, 1)]
     [TestCase(8, 2, 10)]
-    [TestCase(10, 10, 1)]
-    [TestCase(10, 10, 10)]
+    [TestCase(10, 8, 1)]
+    [TestCase(10, 10)]
     public void AddThrow_Should_Add_Throw(
         params int[] throws
     )
@@ -81,7 +79,7 @@ public class LastFrameTests
         }
 
         Assert.That(
-            Sut.Throws.Select(x => x.Count),
+            Sut.Throws,
             Is.EqualTo(throws)
         );
     }

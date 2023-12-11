@@ -68,7 +68,7 @@ public class DefaultFrameTests
         }
 
         Assert.That(
-            Sut.Throws.Select(x => x.Count),
+            Sut.Throws,
             Is.EqualTo(throws)
         );
     }

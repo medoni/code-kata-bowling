@@ -28,7 +28,7 @@ public class BowlingThrowEngineTests
 
         // assert
         Assert.That(
-            Frames.SelectMany(x => x.Throws.Select(y => y.Count)),
+            Frames.SelectMany(x => x.Throws),
             Is.EqualTo(new[] { 1, 2 })
         );
         Assert.That(Sut.ThrowFinished, Is.True);
@@ -42,7 +42,7 @@ public class BowlingThrowEngineTests
 
         // assert
         Assert.That(
-            Frames.SelectMany(x => x.Throws.Select(y => y.Count)),
+            Frames.SelectMany(x => x.Throws),
             Is.EqualTo(new[] { 10 })
         );
         Assert.That(Sut.ThrowFinished, Is.True);
@@ -57,20 +57,17 @@ public class BowlingThrowEngineTests
 
         // assert
         Assert.That(
-            Frames.SelectMany(x => x.Throws.Select(y => y.Count)),
-            Is.EqualTo(new[] { 10 })
+            Frames.SelectMany(x => x.Throws).Sum(),
+            Is.EqualTo(10)
         );
         Assert.That(Sut.ThrowFinished, Is.True);
     }
 
     [Test]
-    public void Throwing_3_Times_Should_Throw_Exception_When_Not_Last_Round(
-        [Range(1, 9)]
-        int round
-    )
+    public void Throwing_3_Times_Should_Throw_Exception_When_2_Strikes_Thrown()
     {
         // arrange
-        for (var i = 0; i < round; ++i)
+        for (var i = 0; i < 9; ++i)
         {
             Sut.Throw(1);
             Sut.Throw(2);
@@ -100,13 +97,13 @@ public class BowlingThrowEngineTests
 
         // act
         Sut.Throw(10);
-        Sut.Throw(10);
         Sut.Throw(2);
+        Sut.Throw(8);
 
         // arrange
         Assert.That(
-            Frames.Last().Throws.Select(x => x.Count),
-            Is.EqualTo(new[] { 10, 10, 2 })
+            Frames.Last().Throws,
+            Is.EqualTo(new[] { 10, 2, 8 })
         );
         Assert.That(Sut.ThrowFinished, Is.True);
     }

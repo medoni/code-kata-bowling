@@ -25,7 +25,6 @@ public class FullStrikeTests
         }
         Sut.Throwing.Throw(10);
         Sut.Throwing.Throw(10);
-        Sut.Throwing.Throw(10);
 
         // assert
         Assert.That(Sut.IsFinished, Is.EqualTo(true));

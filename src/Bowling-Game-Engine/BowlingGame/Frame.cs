@@ -1,18 +1,25 @@
-﻿namespace BowlingCodeKata.BowlingGame;
+﻿using System.Diagnostics;
 
+namespace BowlingCodeKata.BowlingGame;
+
+[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
 public abstract class BaseFrame
 {
-    private readonly List<SingleThrow> _throws;
-    public IReadOnlyList<SingleThrow> Throws => _throws;
+    private readonly List<int> _throws;
+    public IReadOnlyList<int> Throws => _throws;
 
     public BaseFrame()
     {
-        _throws = new List<SingleThrow>();
+        _throws = new List<int>();
     }
 
     public abstract bool CanThrow { get; }
     public abstract bool ThrowFinished { get; }
     public virtual bool IsLastFrame { get; }
+
+    // todo: unit tests
+    public bool IsStrike => _throws.Count == 1 && _throws.First() == 10;
+    public bool IsSpare => _throws.Count == 2 && _throws.Sum() == 10;
 
     public static BaseFrame Create(int frameCount)
     => frameCount switch
@@ -25,8 +32,11 @@ public abstract class BaseFrame
     public void AddThrow(int count)
     {
         if (ThrowFinished) throw new InvalidOperationException("Frame has been finished.");
-        _throws.Add(new SingleThrow(count));
+        _throws.Add(count);
     }
+
+    private string GetDebuggerDisplay()
+    => $"CanThrow: {CanThrow}, ThrowFinished: {ThrowFinished}, IsLastFrame: {IsLastFrame}, Throws: {string.Join(",", _throws)}";
 }
 
 
@@ -39,7 +49,7 @@ public class DefaultFrame : BaseFrame
         {
             if (Throws.Count == 0) return false;
             if (Throws.Count == 2) return true;
-            if (Throws.Last().Count < 10) return false;
+            if (Throws.Last() < 10) return false;
 
             return true;
         }
@@ -48,24 +58,21 @@ public class DefaultFrame : BaseFrame
 
 public class LastFrame : BaseFrame
 {
-    // todo unit tests
     public override bool IsLastFrame => true;
     public override bool CanThrow => !ThrowFinished;
     public override bool ThrowFinished
     {
         get
         {
+            // todo: refactor
             if (Throws.Count == 0) return false;
             if (Throws.Count == 1) return false;
             if (Throws.Count == 3) return true;
 
-            if (Throws.Take(2).Sum(x => x.Count) < 10) return true;
+            if (Throws.Take(2).Sum() < 10) return true;
+            if (Throws.Take(2).Sum() == 20) return true;
 
             return false;
         }
     }
 }
-
-public record SingleThrow(
-    int Count
-);

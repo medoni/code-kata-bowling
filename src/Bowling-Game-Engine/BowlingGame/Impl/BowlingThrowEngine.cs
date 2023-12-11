@@ -49,7 +49,7 @@ public class BowlingThrowEngine : IBowlingThrowEngine
             var lastFrame = _frames.LastOrDefault();
             if (lastFrame is null) return false;
 
-            return lastFrame.IsLastFrame;
+            return !lastFrame.CanThrow;
         }
     }
 
