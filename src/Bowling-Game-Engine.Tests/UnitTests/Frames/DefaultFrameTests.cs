@@ -91,4 +91,40 @@ public class DefaultFrameTests
             Throws.TypeOf<InvalidOperationException>()
         );
     }
+
+    [TestCase(true, 10)]
+    [TestCase(false, 0, 0)]
+    [TestCase(false, 8, 0)]
+    [TestCase(false, 8, 2)]
+    [TestCase(false, 5)]
+    public void IsStrike_Should_Return_Correct_Value(
+        bool expectedValue,
+        params int[] throws
+    )
+    {
+        foreach (var throwCount in throws)
+        {
+            Sut.AddThrow(throwCount);
+        }
+
+        Assert.That(Sut.IsStrike, Is.EqualTo(expectedValue));
+    }
+
+    [TestCase(true, 8, 2)]
+    [TestCase(false, 0, 0)]
+    [TestCase(false, 8, 0)]
+    [TestCase(false, 10)]
+    [TestCase(false, 5)]
+    public void IsSpare_Should_Return_Correct_Value(
+        bool expectedValue,
+        params int[] throws
+    )
+    {
+        foreach (var throwCount in throws)
+        {
+            Sut.AddThrow(throwCount);
+        }
+
+        Assert.That(Sut.IsSpare, Is.EqualTo(expectedValue));
+    }
 }

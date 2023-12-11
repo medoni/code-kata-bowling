@@ -17,7 +17,6 @@ public abstract class BaseFrame
     public abstract bool ThrowFinished { get; }
     public virtual bool IsLastFrame { get; }
 
-    // todo: unit tests
     public bool IsStrike => _throws.Count == 1 && _throws.First() == 10;
     public bool IsSpare => _throws.Count == 2 && _throws.Sum() == 10;
 
@@ -49,9 +48,9 @@ public class DefaultFrame : BaseFrame
         {
             if (Throws.Count == 0) return false;
             if (Throws.Count == 2) return true;
-            if (Throws.Last() < 10) return false;
+            if (IsStrike) return true;
 
-            return true;
+            return false;
         }
     }
 }
