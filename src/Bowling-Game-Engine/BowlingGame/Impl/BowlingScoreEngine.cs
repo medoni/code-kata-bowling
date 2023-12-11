@@ -1,6 +1,9 @@
 ﻿
 namespace BowlingCodeKata.BowlingGame.Impl;
 
+/// <summary>
+/// Responsible for calculate the score for a bowling game
+/// </summary>
 public class BowlingScoreEngine : IBowlingScoringEngine
 {
     private readonly FramesList _frames;
@@ -12,6 +15,9 @@ public class BowlingScoreEngine : IBowlingScoringEngine
         _frames = frames ?? throw new ArgumentNullException(nameof(frames));
     }
 
+    /// <summary>
+    /// Calculates the score of the bowling game
+    /// </summary>
     public int CalculateScore()
     {
         var lastScoredFrame = GetScoredFrames()
@@ -22,6 +28,9 @@ public class BowlingScoreEngine : IBowlingScoringEngine
         return lastScoredFrame.Score;
     }
 
+    /// <summary>
+    /// Returns the scored frames
+    /// </summary>
     public IReadOnlyList<ScoredFrame> GetScoredFrames()
     {
         var scoredFrames = _frames

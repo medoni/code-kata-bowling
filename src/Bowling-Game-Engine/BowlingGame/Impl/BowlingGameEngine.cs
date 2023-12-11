@@ -1,5 +1,8 @@
 ﻿namespace BowlingCodeKata.BowlingGame.Impl;
 
+/// <summary>
+/// Responsible for handling a bowling game
+/// </summary>
 public class BowlingGameEngine : IBowlingGameEngine
 {
     private readonly IBowlingScoringEngine _scoreEngine;
@@ -14,6 +17,9 @@ public class BowlingGameEngine : IBowlingGameEngine
         _throwEngine = throwEngine ?? throw new ArgumentNullException(nameof(throwEngine));
     }
 
+    /// <summary>
+    /// Creates a new bowling game
+    /// </summary>
     public static IBowlingGameEngine Create()
     {
         var frameList = new FramesList();
@@ -29,8 +35,12 @@ public class BowlingGameEngine : IBowlingGameEngine
         return game;
     }
 
+    /// <inheritdoc/>
     public IBowlingScoringEngine Scores => _scoreEngine;
+
+    /// <inheritdoc/>
     public IBowlingThrowEngine Throwing => _throwEngine;
 
+    /// <inheritdoc/>
     public bool IsFinished => _throwEngine.IsFinished;
 }

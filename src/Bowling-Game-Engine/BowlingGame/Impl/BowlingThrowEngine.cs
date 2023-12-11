@@ -1,5 +1,8 @@
 ﻿namespace BowlingCodeKata.BowlingGame.Impl;
 
+/// <summary>
+/// Responsible for throwing pins for a bowling game
+/// </summary>
 public class BowlingThrowEngine : IBowlingThrowEngine
 {
     private readonly FramesList _frames;
@@ -11,6 +14,9 @@ public class BowlingThrowEngine : IBowlingThrowEngine
         _frames = frames ?? throw new ArgumentNullException(nameof(frames));
     }
 
+    /// <summary>
+    /// Throws the given count of pins
+    /// </summary>
     public void Throw(int count)
     {
         ThrowExceptionWhenFinished();
@@ -42,6 +48,9 @@ public class BowlingThrowEngine : IBowlingThrowEngine
         if (IsFinished) throw BowlingException.CreateGameHasFinished();
     }
 
+    /// <summary>
+    /// Returns true when the bowling game is over
+    /// </summary>
     public bool IsFinished
     {
         get
@@ -53,5 +62,8 @@ public class BowlingThrowEngine : IBowlingThrowEngine
         }
     }
 
+    /// <summary>
+    /// Returns true if the current frame has been finished
+    /// </summary>
     public bool ThrowFinished => _frames.LastOrDefault()?.ThrowFinished ?? false;
 }

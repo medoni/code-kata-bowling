@@ -1,11 +1,28 @@
 ﻿namespace BowlingCodeKata.BowlingGame;
 
+/// <summary>
+/// Responsible for storing information about the score of a single frame
+/// </summary>
 public record ScoredFrame
 {
+    /// <summary>
+    /// True if this is the last frame
+    /// </summary>
     public bool IsLastFrame { get; }
+
+    /// <summary>
+    /// The list of throws in this frame
+    /// </summary>
     public IReadOnlyList<int> ThrowCount { get; }
+
+    /// <summary>
+    /// The calculated score of this frame
+    /// </summary>
     public int Score { get; }
 
+    /// <summary>
+    /// Creates a new <see cref="ScoredFrame"/>
+    /// </summary>
     private ScoredFrame(
         bool isLastFrame,
         IEnumerable<int> throwCount,
@@ -17,14 +34,19 @@ public record ScoredFrame
         Score = score;
     }
 
+    /// <summary>
+    /// Returns an empty scored frame
+    /// </summary>
     public static ScoredFrame Empty => new ScoredFrame(false, Array.Empty<int>(), 0);
 
+    /// <summary>
+    /// Calculate a score for a given frame index and list of frames
+    /// </summary>
     public static ScoredFrame CalculateFrame(
         IReadOnlyList<BaseFrame> frames,
         int calculateForFrameIdx
     )
     {
-        // TODO: Unit tests
         if (calculateForFrameIdx >= frames.Count) return Empty;
 
         var frame = frames[calculateForFrameIdx];
@@ -47,6 +69,10 @@ public record ScoredFrame
         );
     }
 
+    /// <summary>
+    /// Calculates additional scores for a given frame.
+    /// Calculation is based on IsStrike and IsSpare and the next frame
+    /// </summary>
     internal static int CalculateSpecialAdditions(
         BaseFrame frame,
         BaseFrame? nextFrame
@@ -69,6 +95,9 @@ public record ScoredFrame
         return 0;
     }
 
+    /// <summary>
+    /// Calculates additional scores for the last frame
+    /// </summary>
     internal static int CalculateSpecialAdditionsLastThrow(
         IEnumerable<int> throws
     )
