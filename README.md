@@ -104,6 +104,11 @@ public interface IBowlingScoringEngine
 Source: [IBowlingThrowEngine.cs](src/Bowling-Game-Engine/BowlingGame/IBowlingScoringEngine.cs)<br>
 Implementation: [BowlingThrowEngine.cs](src/Bowling-Game-Engine/BowlingGame/Impl/BowlingScoreEngine.cs)
 
+## Design / Implementation decisions
+- Single Responsibility (SRP) / Seperation of Concerns
+- Test driven development
+- Clean Code principles
+
 ## How to test
 
 ```bash
@@ -124,3 +129,4 @@ src-test-runner-1 exited with code 0
 
 ## Ressources
 - [Ten-pin bowling](https://en.wikipedia.org/wiki/Ten-pin_bowling)
+- [The Bowling Game Kata (Uncle Bob)](http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata)
