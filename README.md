@@ -12,7 +12,70 @@ The goal of this kata is to create a program that calculates the score of a bowl
     - A method for calculating score
 
 ## Implementation
-TODO
+
+The game engine class
+```csharp
+/// <summary>
+/// Definition of a bowling game engine
+/// </summary>
+public interface IBowlingGameEngine
+{
+    /// <summary>
+    /// Information about the current score
+    /// </summary>
+    IBowlingScoringEngine Scores { get; }
+
+    /// <summary>
+    /// Information about the current throwing 
+    /// </summary>
+    IBowlingThrowEngine Throwing { get; }
+
+    /// <summary>
+    /// True when the game has been finished.
+    /// </summary>
+    bool IsFinished { get; }
+}
+```
+Source: [IBowlingGameEngine.cs](src/Bowling-Game-Engine/BowlingGame/IBowlingGameEngine.cs)<br>
+Implementation: [BowlingGameEngine.cs](src/Bowling-Game-Engine/BowlingGame/Impl/BowlingGameEngine.cs)
+
+The throwing engine class
+```csharp
+/// <summary>
+/// Definition for throwing pins for a bowling game
+/// </summary>
+public interface IBowlingThrowEngine
+{
+    /// <summary>
+    /// Throws the given count of pins
+    /// </summary>
+    /// <exception cref="BowlingException">Thrown when the game has been finished.</exception>
+    void Throw(int count);
+
+    /// <summary>
+    /// Returns true if the game has been finished.
+    /// </summary>
+    bool IsFinished { get; }
+}
+```
+Source: [IBowlingThrowEngine.cs](src/Bowling-Game-Engine/BowlingGame/IBowlingThrowEngine.cs)<br>
+Implementation: [BowlingThrowEngine.cs](src/Bowling-Game-Engine/BowlingGame/Impl/BowlingThrowEngine.cs)
+
+The scoring engine class
+```csharp
+/// <summary>
+/// Definition for calculating score for a bowling game
+/// </summary>
+public interface IBowlingScoringEngine
+{
+    /// <summary>
+    /// Calculates the current score
+    /// </summary>
+    int CalculateScore();
+}
+```
+Source: [IBowlingThrowEngine.cs](src/Bowling-Game-Engine/BowlingGame/IBowlingScoringEngine.cs)<br>
+Implementation: [BowlingThrowEngine.cs](src/Bowling-Game-Engine/BowlingGame/Impl/BowlingScoreEngine.cs)
 
 ## How to Use
 TODO
