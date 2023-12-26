@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  test-runner:
+    build:
+      context: .
+      dockerfile: Bowling-Game-Engine.Tests/Dockerfile
