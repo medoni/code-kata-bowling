@@ -13,6 +13,33 @@ The goal of this kata is to create a program that calculates the score of a bowl
 
 ## Implementation
 
+```mermaid
+---
+title: Game engine overview
+---
+classDiagram
+    class IBowlingGameEngine {
+        <<Interface>>
+        +IBowlingScoringEngine Scores
+        +IBowlingThrowEngine Throwing
+        +bool IsFinished
+    }
+
+    class IBowlingThrowEngine {
+        <<Interface>>
+        +Throw(int count)
+        +bool IsFinished
+    }
+
+    class IBowlingScoringEngine {
+        <<Interface>>
+        +int CalculateScore()
+    }
+
+    IBowlingGameEngine --* IBowlingScoringEngine
+    IBowlingGameEngine --* IBowlingThrowEngine
+```
+
 The game engine class
 ```csharp
 /// <summary>
