@@ -104,8 +104,23 @@ public interface IBowlingScoringEngine
 Source: [IBowlingThrowEngine.cs](src/Bowling-Game-Engine/BowlingGame/IBowlingScoringEngine.cs)<br>
 Implementation: [BowlingThrowEngine.cs](src/Bowling-Game-Engine/BowlingGame/Impl/BowlingScoreEngine.cs)
 
-## How to Use
-TODO
+## How to test
+
+```bash
+git pull
+cd src
+docker compose up --force-recreate --build test-runner
+```
+
+the output should be
+
+```
+src-test-runner-1  | Starting test execution, please wait...
+src-test-runner-1  | A total of 1 test files matched the specified pattern.
+src-test-runner-1  |
+src-test-runner-1  | Passed!  - Failed:     0, Passed:   110, Skipped:     0, Total:   110, Duration: 68 ms - Bowling-Game-Engine.Tests.dll (net8.0)
+src-test-runner-1 exited with code 0
+```
 
 ## Ressources
 - [Ten-pin bowling](https://en.wikipedia.org/wiki/Ten-pin_bowling)
