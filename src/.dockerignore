@@ -1,26 +1,28 @@
 # dotnet
-obj/
-bin/
+**/obj/
+**/bin/
 
 # visual studio (code)
-.vscode/
-.vs/
-*.user
-*.suo
-*.cache
-*.log
-*.vspscc
-*.lck
-*.ldb
-*.bak
+**/.vscode/
+**/.vs/
+**/*.user
+**/*.suo
+**/*.cache
+**/*.log
+**/*.vspscc
+**/*.lck
+**/*.ldb
+**/*.bak
+**/*.userosscache
+**/*.sln.docstates
 
 # NuGet packages
-*.nupkg
+**/*.nupkg
 **/packages/*
 
 # Windows-based files
-Thumbs.db
-ehthumbs.db
+**/Thumbs.db
+**/ehthumbs.db
 
 # macOS-based files
-.DS_Store
+**/.DS_Store
